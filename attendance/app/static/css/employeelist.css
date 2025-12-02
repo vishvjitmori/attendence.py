@@ -1,0 +1,146 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background: #f8fafc;
+    min-height: 100vh;
+}
+
+/* PAGE FIX — REMOVE LEFT SPACE */
+.page {
+    width: 100%;
+    margin-left: 0 !important;
+    padding: 1.5rem 2rem;
+    background: white;
+    border-radius: 0; 
+}
+
+/* Breadcrumb */
+.breadcrumbs {
+    color: #64748b;
+    font-size: 0.875rem;
+    margin-bottom: 1rem;
+    font-weight: 500;
+}
+
+.breadcrumbs span {
+    color: #667eea;
+    font-weight: 600;
+}
+
+.header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.header-row h2 {
+    font-size: 1.8rem;
+    background: linear-gradient(135deg, #222222 0%, #202020 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 700;
+}
+
+/* Add Button */
+.add-btn {
+    background:#0d5c89;
+    color: white;
+    padding: 0.75rem 1.8rem;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+/* Filters */
+.filters {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.input-box {
+    position: relative;
+}
+
+.input-box input {
+    width: 100%;
+    padding: 0.85rem 1rem;
+    padding-right: 3rem;
+    border: 1.8px solid #e2e8f0;
+    border-radius: 10px;
+    font-size: 0.95rem;
+}
+
+.input-box i {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #94a3b8;
+}
+
+/* Table FULL WIDTH FIX */
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+    border-radius: 10px;
+}
+
+.emp-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+}
+
+.emp-table thead {
+    background: #e0f2fe;
+    color: #0c4a6e;
+}
+
+.emp-table th {
+    padding: 1rem;
+    text-align: left;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.emp-table td {
+    padding: 1rem;
+    font-size: 0.95rem;
+    color: #334155;
+}
+
+/* Actions buttons */
+.actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.edit-btn, .delete-btn {
+    width: 34px;
+    height: 34px;
+    border-radius: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.edit-btn {
+    background: #3b82f6;
+}
+
+.delete-btn {
+    background: #ef4444;
+}

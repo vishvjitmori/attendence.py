@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+{% block title %} employeelist {% endblock %}
+    </title>
+{% block content %}
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.4.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/employeelist.css') }}">
+</head>
+
+<body>
+
+    <div class="page">
+
+        <!-- Breadcrumb -->
+        <div class="breadcrumbs">
+            Dashboard / Employee Management / <span>Employee List</span>
+        </div>
+
+        <div class="header-row">
+            <h2>Employee List</h2>
+            <a class="add-btn" href="{{ url_for('addemployee.addemployee') }}">Add Employee</a>
+        </div>
+
+        <!-- Filters -->
+        <div class="filters">
+            <div class="input-box">
+                <input type="text" placeholder="Store Name">
+                <i class="ri-search-line"></i>
+            </div>
+
+            <div class="input-box">
+                <input type="text" placeholder="Employee Name">
+                <i class="ri-search-line"></i>
+            </div>
+
+            <div class="input-box">
+                <input type="date">
+            </div>
+        </div>
+
+        <!-- Table -->
+        <div class="table-container">
+            <table class="emp-table">
+                <thead>
+                    <tr>
+                        <th><input type="checkbox"></th>
+                        <th>ID</th>
+                        <th>Store Name</th>
+                        <th>Employee Name</th>
+                        <th>Email</th>
+                        <th>Designation</th>
+                        <th>Contact</th>
+                        <th>Created At</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for i in employees %}
+                    <tr>
+                        <td> <input type="checkbox"></td>
+                        <td>{{ i.id }}</td>
+                        <td>{{ i.store.store_name }}</td>
+                        <td>{{ i.employee_name }}</td>
+                        <td>{{ i.email }}</td>
+                        <td>{{ i.designation }}</td>
+                        <td>{{ i.contact1 }}</td>
+                        <td>{{ i.created_at.strftime('%d-%m-%Y') }}</td>
+                        <td>{{ i.status }}</td>
+                        <td class="actions">
+                            <a href="/edit-store/{{ i.id }}" class="edit-btn"><i class="ri-edit-line"></i></a>
+                            <a href="/delete-store/{{ i.id }}" class="delete-btn"><i class="ri-delete-bin-line"></i></a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+        </div>
+
+    </div>
+
+</body>
+</html>
+{% endblock %}

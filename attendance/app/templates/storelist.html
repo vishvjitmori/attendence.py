@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {% block title %} storelist {% endblock %}
+    </title>
+    {% block content %}
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.4.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/storelist.css')}}">
+</head>
+
+<body>
+
+    <div class="page">
+
+        <!-- Breadcrumb -->
+        <div class="breadcrumbs">
+            Dashboard / Store Management / <span>Employee List</span>
+        </div>
+
+        <!-- Title + Add Store -->
+        <div class="top-row">
+            <h2>Store List</h2>
+            <a class="btn-add" href="{{ url_for('addstore.addstore')}}">Add Stores</a>
+
+        </div>
+
+        <!-- Filters -->
+        <div class="filters">
+            <div class="input-box">
+                <input type="text" id="searchName" placeholder="Store Name">
+                <i class="ri-search-line"></i>
+            </div>
+
+            <div class="input-box">
+                <input type="date" id="filterDate">
+                <i class="ri-calendar-2-line"></i>
+            </div>
+        </div>
+
+        <!-- Table -->
+        <div class="table-container">
+            <table id="storeTable">
+                <thead>
+                    <tr>
+                        <th><input type="checkbox"></th>
+                        <th>ID</th>
+                        <th>Store Name</th>
+                        <th>Email</th>
+                        <th>Address</th>
+                        <th>Contact</th>
+                        <th>Create_at</th>
+                        <th>Actions</th>
+                    </tr>
+
+                </thead>
+
+                <tbody id="tableBody">
+                    {% for i in stores %}
+                    <tr>
+                        <td><input type="checkbox"></td>
+                        <td>{{ i.id }}</td>
+                        <td>{{ i.store_name }}</td>
+                        <td>{{ i.email }}</td>
+                        <td>
+                            {{ i.address_name }},
+                            {{ i.street_name }},
+                            {{ i.town }},
+                            {{ i.locality }},
+                            {{ i.post_code }}
+                        </td>
+                        <td>{{ i.contact1 }}</td>
+                        <td>{{ i.created_at.strftime('%d-%m-%Y') }}</td>
+                        <td class="actions">
+                            <a href="/edit-store/{{ i.id }}" class="edit-btn"><i class="ri-edit-line"></i></a>
+                            <a href="/delete-store/{{ i.id }}" class="delete-btn"><i class="ri-delete-bin-line"></i></a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+                
+            </table>
+        </div>
+
+        <!-- Pagination -->
+        <div class="pagination">
+            <button id="prevBtn">Previous</button>
+            <span id="pageInfo"></span>
+            <button id="nextBtn">Next</button>
+        </div>
+
+    </div>
+
+    <script src="{{ url_for('static', filename=('js/storelist.js'))}}"></script>
+</body>
+
+</html>
+{% endblock %}
